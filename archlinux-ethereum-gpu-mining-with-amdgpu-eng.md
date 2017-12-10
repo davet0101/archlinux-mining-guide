@@ -18,7 +18,7 @@ Arch has a great [Arch Wiki](https://wiki.archlinux.org'). How to install Arch i
 
  - https://wiki.archlinux.org/index.php/Installation_guide
  - https://wiki.archlinux.org/index.php/Systemd-networkd (I like systemd but feel free to use another DHCP Client or Network Manager)
- - https://wiki.archlinux.org/index.php/GRUB (Simple, reliable)
+ - https://wiki.archlinux.org/index.php/GRUB (simple, reliable)
 
 My Motherboard useses UEFI so I created a seperate boot partition for grub and the kernels. My parttion table looks like this
 ```
@@ -52,11 +52,11 @@ After the reboot I installed everything I've forgotten
  - git
  - sensors
 
-Usefull Stuff from the Arch User Repo - pacaur is a Tool to install stuff from the AUR (for lazy people like me)
+Usefull Stuff from the Arch User Repo - pacaur is a tool to install stuff from the AUR (for lazy people like me)
  - cower (required by pacaur)
  - pacaur
 
-with pacaur installed It is easy to install all the required Tools to mine Ethereum. pacaur Pulls everything from the AUR and the repositories
+with pacaur installed It is easy to install all the required tools to mine Ethereum. pacaur pulls everything from the AUR and the repositories
 
 Use
 ```
@@ -107,7 +107,7 @@ flo@miner-1 ~ % clinfo | grep -e 'Device Board' -e 'Device OpenCL' -e 'Device Ve
   Device OpenCL C Version                         OpenCL C 1.2
   Device Board Name (AMD)                         Radeon RX 580 Series
   Device Vendor                                   Advanced Micro Devices, Inc.
-  Device Vendor ID                                0x1002
+  Device Vendor ID                                0x1002pool
   Device OpenCL C Version                         OpenCL C 1.2
   Device Board Name (AMD)                         Radeon RX 580 Series
 ```
@@ -185,7 +185,7 @@ Preparing DAG for block #0
 
 # Mining
 
-To start mining start ethminer (within a pool)
+To start mining, run ethminer (with pool mining)
 
 ```
 ethminer -G -F http://eth-eu.dwarfpool.com:80/0xBCeCBe76613c452A9562FF8C5e4D7942E9a44E17/miner1
@@ -195,7 +195,6 @@ ethminer -G -F http://eth-eu.dwarfpool.com:80/0xBCeCBe76613c452A9562FF8C5e4D7942
 
 ## screen
 screen is a tool that allows you to run everything in background and interact with
-Damit das ganze brav weiter läuft und man immer und überall schnell auf den Miner zugreifen kann ist **screen** ein must have.
 
 **screen -S miner**
 starts a screen session. that session runs even if the connection (ssh) is lost. It is good practice to use screen.
@@ -223,11 +222,11 @@ Pressing **[ESC]** again exits this mode.
 
 # connect to the miner (administer)
 
-The best mway to administer a miner is SSH
+The best way to administer a miner is SSH
 
 ## Android Phones
 
-Look in F-Droid for Termux and Hackers Keyboard. Termux installs a Debian/Ubuntu like environment on your phone. with that you can install openssh and most of the nice linux tools on you phone. Termux is the swiss army knife for nerds.
+Look in F-Droid for Termux and Hackers Keyboard. Termux installs a Debian/Ubuntu like environment on your phone, with that you can install openssh and most of the nice linux tools on you phone. Termux is the swiss army knife for nerds.
 
 Open Termux and ssh into your mining rig
 ```
