@@ -298,8 +298,6 @@ screen -dmS mining ethminer -G -F http://eth-eu.dwarfpool.com:80/0xBCeCBe76613c4
 
 
 
-
-
 # Wallet
 Benutz was du willst. Ich verwende Hardware Wallets und Mist.
 
@@ -314,6 +312,6 @@ Verschlüssle deine Geräte (vort diebstahl sichern)
  - eMails mit gnupg (die combo mutt und gnupg ist sehr gut) - Manche Firmen verschlüsseln Mails an dich mit gnupg
  - Verwende keine Smartphones die keinen Support mehr bieten.
 
-Mache sicherungen von deinen PrivateKeys (Wallets). Abscreiben Ausdrucken ...
+Mache Sicherungen von deinen PrivateKeys (Wallets). (abschreiben, ausdrucken ... )
 
 Lasse keine große mengen an Geld auf Online Platformen wo du keine kontrolle über den PrivateKey hast.
