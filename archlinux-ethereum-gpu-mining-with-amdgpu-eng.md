@@ -9,7 +9,7 @@ The Arch User Repository provides you with everything you need.
 
 ## Hardware
 
-I recommend to buy a Mining Motherboard, these are designed for Crypto Mining and Provide a lot of PCIe Ports. They are not hard to find.
+I recommend to buy a mining motherboard. These are designed for crypto-mining and provide a lot of PCIe Ports. They are not hard to find.
 
 
 # Basic install (no GUI)
@@ -29,64 +29,63 @@ sda      8:0    0 111.8G  0 disk
 `-sda3   8:3    0  96.1G  0 part /
 ```
 
-## Packete meiner Basic installation
+## packets I installed on my rig
 
-Optionales sind Tools die ich gerne verwende und auf allen Maschinen die ich kenne
-installiert sind. Alles andere sind must haves.
-
+During setup I installed
+```
 pacstrap /mnt base base-devel
+```
 
+After the reboot I installed everything I've forgotten
  - sudo
  - openssh
  - grub
- - intel-ucode (Wenn man ein Intel System verwendet)
+ - efibootmgr
+ - intel-ucode (If you are using an intel cpu)
  - screen
- - bpython (optional) beste Python Shell die ich kenne
- - vim (optional) mein Lieblingseditor in der Shell
- - htop (optional) fancy top
- - zsh (optional) gute Shell
- - grml-zsh-config (optional) config zur zsh
- - fish (optional) ncoh eine gute Shell
+ - bpython (optional) my favorite way to run a python shell
+ - vim (optional)
+ - htop (optional)
+ - zsh (optional)
+ - grml-zsh-config (optional)
+ - fish (optional)
  - git
  - sensors
 
-
-
-Usefull Stuff ausm Arch User Repo
+Usefull Stuff from the Arch User Repo - pacaur is a Tool to install stuff from the AUR (for lazy people like me)
  - cower (required by pacaur)
  - pacaur
 
-ist pacaur installiert kann einfach jedes Packet aus dem Arch User Repo (und normalem Repo) mit
+with pacaur installed It is easy to install all the required Tools to mine Ethereum. pacaur Pulls everything from the AUR and the repositories
+
+Use
 ```
 pacaur -S <Package-name>
 ```
-installiert werden.
+to install everything
 
 
 # Mining Software
-ethminer benötigt mindestens OpenCL 1.2. Zur Zeit stellt der Mesa Treiber nur OpenCL 1.1 zur
-verfügung. Um mit den GPUs zu minen muss auf die properitäre OpenCL implementation von AMD gegriffen werden.
+**ethminer** requires at least OpenCL 1.2. The mesa implementation supports only OpenCL 1.1. But it is possible to use the AMD implementation with the free AMDGPU drivers of the kernel.
 
 
-## Packages from repos
+## Packete aus den Repositories
  - clinfo (optional)
 
-## Required packages from AUR
+Can be used to display information about the installed openCL libs.
 
- - [ethminer](https://aur.archlinux.org/packages/ethminer/) (Miner mit GPU support) [[Upstream URL]](https://github.com/ethereum-mining/ethminer)
- - [opencl-amd](https://aur.archlinux.org/packages/opencl-amd/) (properitäre OpenCL implementation)
+## required packages from the Arch User Repository
 
-Einfach
+ - [ethminer](https://aur.archlinux.org/packages/ethminer/) (Miner with GPU support) [[Upstream URL]](https://github.com/ethereum-mining/ethminer)
+ - [opencl-amd](https://aur.archlinux.org/packages/opencl-amd/) (propriatary OpenCL implementation)
+
+
 ```
 pacaur -S ethminer opencl-amd clinfo
 ```
 
-und los minen.
-
 
 # Erste Tests
-
-
 ### clinfo
 
 ```
@@ -186,60 +185,84 @@ Preparing DAG for block #0
 
 # Mining
 
-Starte **ethminer**, z.B. hier über dwarfpool
+To start mining start ethminer (within a pool)
 
 ```
 ethminer -G -F http://eth-eu.dwarfpool.com:80/0xBCeCBe76613c452A9562FF8C5e4D7942E9a44E17/miner1
 ```
 
-## screen kurz erklärt
+
+
+## screen
+screen is a tool that allows you to run everything in background and interact with
 Damit das ganze brav weiter läuft und man immer und überall schnell auf den Miner zugreifen kann ist **screen** ein must have.
 
 **screen -S miner**
-
-startet eine screen Session diese Session läuft weiter auch wenn man die verbindung zum Server verliert. **-S** verwendet man (optional) um der Session einen Namen zu geben
+starts a screen session. that session runs even if the connection (ssh) is lost. It is good practice to use screen.
+**-S** is optional to name the session
 
 **screen -list**
 
-listet die laufenden Sessions auf
+lists running screen sessions
 
 **screen -r**
 
-Die wichtigsten Tastenkombinationen sind.
+reattaches a running session.
 
 **[CTRL]+[A]+[D]**
 
-zum detachen der Session
+detaches the session
 
 **[CTRL]+[A]**
 **[ESC]**
 
-wechselt in den copy mode. In den kann man mit [PageUp], [PageDown], und Pfeiltasten herum scrollen
+Changes the mode to the copy mode which allows you to scroll in the session.
 
-Nochmal **[ESC]** und man ist beim prompt
+Pressing **[ESC]** again exits this mode.
 
 
-# Sich mit dem Miner verbinden
+# connect to the miner (administer)
 
-Im prinzip administriert man so eine Kiste am besten mit OpenSSH
+The best mway to administer a miner is SSH
 
 ## Android Phones
 
-Für Android gibts F-Droid (ein AppStore mit guten OpenSource Tools)
-daraus zieht man sich Termux und HackersKeyboard. In termux kann man mit apt (wie in Debian) Pakete installieren. Quasi das Swiss Army Knife für Hacker und Nerds am Phone
+Look in F-Droid for Termux and Hackers Keyboard. Termux installs a Debian/Ubuntu like environment on your phone. with that you can install openssh and most of the nice linux tools on you phone. Termux is the swiss army knife for nerds.
+
+Open Termux and ssh into your mining rig
+```
+apt install ssh
+ssh flo@192.168.x.x
+```
 
 ## Windows
 
-Da gibts viele Möglichkeiten. Linux Subsystem for Windows (das Zeug von Microsoft), Putty, WinSCP ... mein Favorit bleibt aber cygwin.
+So many Tools SSH
+ - Linux Subsystem for Windows (das Zeug von Microsoft)
+ - Putty,
+ - WinSCP
+My tool of choice is cygwin
 
 ## Mac
 
 Nothing neeeded OS X ships with ssh!
 open a f****** terminal
 
-##
+```
+ssh flo@192.168.x.x
+```
+
+## Linux
+open a f****** terminal
+
+```
+ssh flo@192.168.x.x
+```
+
 
 # Tuning
+
+
 
  Die BIOS der Karten modifizieren um den Stromverbrauch zu minimieren. Einfach an den nächsten Windows kübel stecken. Google ist voll von BIOS Guides
  [anorak.tech](https://anorak.tech/ ) ist eine gute Seite mit einer großen Community
@@ -277,7 +300,7 @@ flo@miner-1 ~ % cat /proc/cmdline
 BOOT_IMAGE=/vmlinuz-linux root=UUID=557eaeb6-cfb0-4304-8d0a-2f277cedcb4e rw quiet amdgpu.vm_fragment_size=9
 ```
 
-Screen Session (deteched) starten mit dem ethminer
+Screen Session (detached) starten mit dem ethminer
 ```
 screen -dmS mining ethminer -G -F http://eth-eu.dwarfpool.com:80/0xBCeCBe76613c452A9562FF8C5e4D7942E9a44E17/miner1
 ```
@@ -286,18 +309,20 @@ screen -dmS mining ethminer -G -F http://eth-eu.dwarfpool.com:80/0xBCeCBe76613c4
 
 
 
-
-
 # Wallet
-Use What you like! I use Mist right now and some Hardware Wallets from Ledger
+Benutz was du willst. Ich verwende Hardware Wallets und Mist.
 
-Learn how to defend yourself on the Computer that is used to store your data.
+Lerne dich am Computer zu schützen.
 
 [Surveilance Self-Defence](https://ssd.eff.org/)
 
-Verschlüssle deine Geräte
+Verschlüssle deine Geräte (vort diebstahl sichern)
  - Windows z.B. mit BitLocker, VeraCrypt ...
  - Linux - dmcrypt LUKS ...
  - Sensible Files mit gnupg
  - eMails mit gnupg (die combo mutt und gnupg ist sehr gut) - Manche Firmen verschlüsseln Mails an dich mit gnupg
  - Verwende keine Smartphones die keinen Support mehr bieten.
+
+Mache Sicherungen von deinen PrivateKeys (Wallets). (abschreiben, ausdrucken ... )
+
+Lasse keine große mengen an Geld auf Online Platformen wo du keine kontrolle über den PrivateKey hast.
