@@ -183,7 +183,7 @@ Preparing DAG for block #0
 
 # Mining
 
-Starte **ethminer**, z.B. hier über dwarfpool
+Starte **ethminer**, z.B. hier mit dwarfpool als pool miner
 
 ```
 ethminer -G -F http://eth-eu.dwarfpool.com:80/0xBCeCBe76613c452A9562FF8C5e4D7942E9a44E17/miner1
