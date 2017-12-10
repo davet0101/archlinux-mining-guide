@@ -1,27 +1,26 @@
 # Archlinux Ethereum AMDGPU Miner Guide (for Newbies)
 
-Im prinzip haben meine alten Grafikkarten eine neue Aufgabe bekommen (heizen und cryto mining)
+Reused my old GPUs to heat up my flat, thats why I build this.
 
-Ich verwende hier den den neuesten Linux Kernel in dem ich die openCL Libs vom AMDGPUpro Treiber mit den offenen AMDGPU Treiber nutze. Leider sind die bei AMD immer so langsam mit Updates.
+I decided to use the latest Linux kernel (Keep it simple stupid). This is possible with the OpenCL Libs of the AMDGPU-Pro Drivers.
+
+The Arch User Repository provides you with everything you need.
+
 
 ## Hardware
-Im prinzip alles egal ein Mining Motherboard kann aber nicht schaden und spart Nerven. Die sind einfach dafür designt und beieten Massig PCIe Ports und jeder hängt auf einer PCIe lane.
 
-Im Prinzip haben fast alle Mining Boards BTC im Namen. Googlen nach aktuellen angeboten.
-Descent
+I recommend to buy a Mining Motherboard, these are designed for Crypto Mining and Provide a lot of PCIe Ports. They are not hard to find.
 
 
 # Basic install (no GUI)
 
-Wie genau man Arch Linux installiert am besten im [Arch Wiki](https://wiki.archlinux.org')
-nachlesen.
-
+Arch has a great [Arch Wiki](https://wiki.archlinux.org'). How to install Arch is well documented there.
 
  - https://wiki.archlinux.org/index.php/Installation_guide
- - https://wiki.archlinux.org/index.php/Systemd-networkd
- - https://wiki.archlinux.org/index.php/GRUB
+ - https://wiki.archlinux.org/index.php/Systemd-networkd (I like systemd but feel free to use another DHCP Client or Network Manager)
+ - https://wiki.archlinux.org/index.php/GRUB (Simple, reliable)
 
-Partitionierung (mein Setup UEFI mit Grub als Bootloader)
+My Motherboard useses UEFI so I created a seperate boot partition for grub and the kernels. My parttion table looks like this
 ```
 NAME   MAJ:MIN RM   SIZE RO TYPE MOUNTPOINT
 sda      8:0    0 111.8G  0 disk
@@ -40,7 +39,6 @@ pacstrap /mnt base base-devel
  - sudo
  - openssh
  - grub
- - efibootmgr
  - intel-ucode (Wenn man ein Intel System verwendet)
  - screen
  - bpython (optional) beste Python Shell die ich kenne
