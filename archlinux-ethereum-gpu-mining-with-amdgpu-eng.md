@@ -261,10 +261,8 @@ ssh flo@192.168.x.x
 
 # Tuning
 
-
-
- Die BIOS der Karten modifizieren um den Stromverbrauch zu minimieren. Einfach an den nächsten Windows kübel stecken. Google ist voll von BIOS Guides
- [anorak.tech](https://anorak.tech/ ) ist eine gute Seite mit einer großen Community
+I recommend to modifiy the BIOS of the GPUs, to minimize the power.
+[anorak.tech](https://anorak.tech/ ) is a good ressource for Bios Files. Google for how to midifiy the bios (you need a Windows machine to do that)
 
 
 Aus dem Arch User Repo
